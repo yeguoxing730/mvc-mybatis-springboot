@@ -14,6 +14,7 @@ public class LogListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         String log4jdir = sce.getServletContext().getInitParameter(log4jdirkey);
+        System.out.println("log listener initialization");
         System.setProperty(log4jdirkey, log4jdir);
     }
 

@@ -18,6 +18,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Return jsonErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+        e.printStackTrace();
         //记录错误日志到本地日志系统
         LoggerHelper.error(Utils.getExceptionTrace(e));
         // e.printStackTrace();

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvc.boot.dao.study.master.StudyMasterMapper">
+    <!--<cache eviction="LRU"-->
+           <!--flushInterval="60000"-->
+           <!--size="1024"-->
+           <!--readOnly="true" type="org.mybatis.caches.ehcache.EhcacheCache"-->
+    <!--/>-->
+    <!--使用redis开启二级缓存-->
+    <!--<cache type="com.strive.cms.cache.RedisCache"/>-->
+
+    <!--开启二级缓存 使用ehcache cache-->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache" >-->
+        <!--<property name="timeToIdleSeconds" value="3600"/>-->
+        <!--<property name="timeToLiveSeconds" value="3600"/>-->
+        <!--&lt;!&ndash; 同ehcache参数maxElementsInMemory &ndash;&gt;-->
+        <!--<property name="maxEntriesLocalHeap" value="1000"/>-->
+        <!--&lt;!&ndash; 同ehcache参数maxElementsOnDisk &ndash;&gt;-->
+        <!--<property name="maxEntriesLocalDisk" value="10000000"/>-->
+        <!--<property name="memoryStoreEvictionPolicy" value="LRU"/>-->
+    <!--</cache>-->
+
+    <update id="updateByPrimaryKey" parameterType="com.mvc.boot.entity.Study">
+        update study
+        set studyname = #{studyname}
+        where id = #{id}
+    </update>
+</mapper>

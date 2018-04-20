@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mvc.boot.dao.StudentMapper">
+<mapper namespace="com.mvc.boot.dao.product.master.StudentMasterMapper">
     <!--<cache eviction="LRU"-->
            <!--flushInterval="60000"-->
            <!--size="1024"-->
@@ -10,50 +10,17 @@
     <!--<cache type="com.strive.cms.cache.RedisCache"/>-->
 
     <!--开启二级缓存 使用ehcache cache-->
-    <cache type="org.mybatis.caches.ehcache.EhcacheCache" >
-        <property name="timeToIdleSeconds" value="3600"/>
-        <property name="timeToLiveSeconds" value="3600"/>
-        <!-- 同ehcache参数maxElementsInMemory -->
-        <property name="maxEntriesLocalHeap" value="1000"/>
-        <!-- 同ehcache参数maxElementsOnDisk -->
-        <property name="maxEntriesLocalDisk" value="10000000"/>
-        <property name="memoryStoreEvictionPolicy" value="LRU"/>
-    </cache>
-    <resultMap id="BaseResultMap" type="com.mvc.boot.entity.Student">
-        <id column="Uid" jdbcType="INTEGER" property="uid" />
-        <result column="Name" jdbcType="VARCHAR" property="name" />
-        <result column="Age" jdbcType="INTEGER" property="age" />
-        <result column="ClassId" jdbcType="INTEGER" property="classid" />
-    </resultMap>
-    <sql id="Base_Column_List">
-        Uid, Name, Age, ClassId
-    </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from student
-        where Uid = #{uid}
-    </select>
-    <select id="selectByCondition" parameterType="com.mvc.boot.entity.Student" resultMap="BaseResultMap">
-        SELECT
-        <include refid="Base_Column_List"/>
-        from student
-        <where>
-            1=1
-            <if test="uid != null">
-                and Uid=#{uid}
-            </if>
-            <if test="name != null">
-                and Name=#{name,jdbcType=VARCHAR}
-            </if>
-            <if test="age != null">
-                and Age=#{age,jdbcType=INTEGER}
-            </if>
-            <if test="classid != null">
-                and ClassId=#{classid,jdbcType=INTEGER}
-            </if>
-        </where>
-    </select>
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache" >-->
+        <!--<property name="timeToIdleSeconds" value="3600"/>-->
+        <!--<property name="timeToLiveSeconds" value="3600"/>-->
+        <!--&lt;!&ndash; 同ehcache参数maxElementsInMemory &ndash;&gt;-->
+        <!--<property name="maxEntriesLocalHeap" value="1000"/>-->
+        <!--&lt;!&ndash; 同ehcache参数maxElementsOnDisk &ndash;&gt;-->
+        <!--<property name="maxEntriesLocalDisk" value="10000000"/>-->
+        <!--<property name="memoryStoreEvictionPolicy" value="LRU"/>-->
+    <!--</cache>-->
+
+
     <delete id="deleteByPrimaryKey" parameterType="int">
         delete from student
         where Uid = #{uid}

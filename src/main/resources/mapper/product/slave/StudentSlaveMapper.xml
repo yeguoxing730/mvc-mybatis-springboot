@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvc.boot.dao.product.slave.StudentSlaveMapper">
+    <resultMap id="BaseResultMap" type="com.mvc.boot.entity.Student">
+        <id column="Uid" jdbcType="INTEGER" property="uid" />
+        <result column="Name" jdbcType="VARCHAR" property="name" />
+        <result column="Age" jdbcType="INTEGER" property="age" />
+        <result column="ClassId" jdbcType="INTEGER" property="classid" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        Uid, Name, Age, ClassId
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from student
+        where Uid = #{uid}
+    </select>
+    <select id="selectByCondition" parameterType="com.mvc.boot.entity.Student" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from student
+        <where>
+            1=1
+            <if test="uid != null">
+                and Uid=#{uid}
+            </if>
+            <if test="name != null">
+                and Name=#{name,jdbcType=VARCHAR}
+            </if>
+            <if test="age != null">
+                and Age=#{age,jdbcType=INTEGER}
+            </if>
+            <if test="classid != null">
+                and ClassId=#{classid,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+</mapper>

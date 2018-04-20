@@ -1,21 +1,15 @@
-package com.mvc.boot.dao;
+package com.mvc.boot.dao.product.master;
 
 
 import com.mvc.boot.entity.Student;
 
-import java.util.List;
 
-
-public interface StudentMapper {
+public interface StudentMasterMapper {
     int deleteByPrimaryKey(int uid);
 
     int insert(Student record);
 
     int insertSelective(Student record);
-
-    Student selectByPrimaryKey(int uid);
-
-    List<Student> selectByCondition(Student record);
 
     int updateByPrimaryKeySelective(Student record);
 

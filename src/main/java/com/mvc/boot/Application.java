@@ -2,15 +2,15 @@ package com.mvc.boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * Created by yeguo on 2018/3/18.
  */
-@EnableCaching
-@SpringBootApplication
+//@EnableCaching
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class Application extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
